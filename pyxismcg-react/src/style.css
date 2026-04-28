@@ -137,29 +137,69 @@ body {
   gap: 0.65rem;
 }
 
+.adminPager {
+  justify-content: flex-start;
+}
+
 .adminListItem {
-  border: 1px solid #dde3f9;
-  border-radius: 0.7rem;
-  padding: 0.55rem;
+  border: 1px solid #d8e0fb;
+  border-radius: 0.9rem;
+  padding: 0.7rem 0.75rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 0.65rem;
+  gap: 0.8rem;
   align-items: center;
+  background: linear-gradient(180deg, #ffffff, #f8faff);
+  box-shadow: 0 8px 22px rgba(41, 52, 118, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.adminListItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(41, 52, 118, 0.14);
+  border-color: #cbd6ff;
 }
 
 .adminListItem img {
-  width: 58px;
-  height: 58px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--brand-orange);
+}
+
+.adminListItem strong {
+  color: var(--brand-blue);
 }
 
 .adminListItem span {
   color: #5f6689;
+  display: block;
+  margin-top: 0.15rem;
 }
 
 .adminListItem button {
   background: #ad1e1e;
+}
+
+.adminRowActions {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.adminRowActions button {
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.84rem;
+  box-shadow: 0 6px 14px rgba(41, 52, 118, 0.14);
+}
+
+.adminRowActions button:first-child {
+  background: var(--brand-blue);
+}
+
+.adminRowActions button:last-child {
+  background: #b42323;
 }
 
 .adminTeamPreview {
@@ -191,6 +231,17 @@ body {
 .adminDragCard.dropTarget {
   border-color: var(--brand-orange);
   box-shadow: 0 0 0 2px rgba(234, 92, 12, 0.2);
+}
+
+@media (max-width: 700px) {
+  .adminListItem {
+    grid-template-columns: auto 1fr;
+  }
+
+  .adminRowActions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
 }
 
 .topNav {

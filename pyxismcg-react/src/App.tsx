@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 
 type Profile = {
+  id: string;
   name: string;
   role: string;
   bio: string;
@@ -66,19 +67,22 @@ const footerMarkets = [
   { label: "Life Sciences", href: "life-sciences.htm" },
 ];
 
-const ADMIN_STORAGE_KEY = "pyxis_admin_profiles";
+const ADMIN_STORAGE_KEY = "pyxis_all_profiles";
 const ADMIN_AUTH_KEY = "pyxis_admin_auth";
 const ADMIN_ORDER_KEY = "pyxis_profile_order";
+const LEGACY_CUSTOM_STORAGE_KEY = "pyxis_admin_profiles";
 
 function getProfileKey(profile: Profile): string {
-  return `${profile.name}__${profile.role}`;
+  return profile.id;
 }
 
 function parseProfiles(html: string): Profile[] {
   const pattern = /openProfile\(\s*'([\s\S]*?)',\s*'([\s\S]*?)',\s*'([\s\S]*?)',\s*'([\s\S]*?)'\s*\)/g;
   const profiles: Profile[] = [];
+  let idx = 0;
   for (const match of html.matchAll(pattern)) {
     profiles.push({
+      id: `seed-${idx++}`,
       name: match[1].replaceAll("\\'", "'"),
       role: match[2].replaceAll("\\'", "'"),
       bio: match[3].replaceAll("\\'", "'"),
@@ -95,7 +99,6 @@ export default function App() {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [profiles, setProfiles] = useState<Profile[]>([]);
-  const [customProfiles, setCustomProfiles] = useState<Profile[]>([]);
   const [profileOrder, setProfileOrder] = useState<string[]>([]);
   const [activeProfile, setActiveProfile] = useState<Profile | null>(null);
   const [search, setSearch] = useState("");
@@ -110,25 +113,54 @@ export default function App() {
     bio: "",
     image: "",
   });
+  const [editingKey, setEditingKey] = useState<string | null>(null);
+  const [adminListPage, setAdminListPage] = useState(0);
   const [dragKey, setDragKey] = useState<string | null>(null);
   const [dropKey, setDropKey] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/source/index.html")
       .then((r) => r.text())
-      .then((html) => setProfiles(parseProfiles(html)))
-      .catch(() => setProfiles([]));
-  }, []);
+      .then((html) => {
+        const parsedProfiles = parseProfiles(html);
+        const ensureIds = (items: Profile[]) =>
+          items.map((item, index) => ({
+            ...item,
+            id: item.id ?? `migrated-${index}-${Date.now()}`,
+          }));
+        const stored = localStorage.getItem(ADMIN_STORAGE_KEY);
+        if (stored) {
+          try {
+            const saved = JSON.parse(stored) as Profile[];
+            if (Array.isArray(saved) && saved.length > 0) {
+              const withIds = ensureIds(saved);
+              setProfiles(withIds);
+              localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(withIds));
+              return;
+            }
+          } catch {
+            // ignore parse error and fallback to parsed profiles
+          }
+        }
 
-  useEffect(() => {
-    const raw = localStorage.getItem(ADMIN_STORAGE_KEY);
-    if (!raw) return;
-    try {
-      const saved = JSON.parse(raw) as Profile[];
-      setCustomProfiles(Array.isArray(saved) ? saved : []);
-    } catch {
-      setCustomProfiles([]);
-    }
+        const legacy = localStorage.getItem(LEGACY_CUSTOM_STORAGE_KEY);
+        if (legacy) {
+          try {
+            const legacyProfiles = JSON.parse(legacy) as Profile[];
+            if (Array.isArray(legacyProfiles) && legacyProfiles.length > 0) {
+              const merged = ensureIds([...legacyProfiles, ...parsedProfiles]);
+              setProfiles(merged);
+              localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(merged));
+              return;
+            }
+          } catch {
+            // ignore legacy parse error and fallback
+          }
+        }
+
+        setProfiles(parsedProfiles);
+      })
+      .catch(() => setProfiles([]));
   }, []);
 
   useEffect(() => {
@@ -202,12 +234,10 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
-  const allProfiles = useMemo(() => [...customProfiles, ...profiles], [customProfiles, profiles]);
-
   const orderedProfiles = useMemo(() => {
-    if (profileOrder.length === 0) return allProfiles;
+    if (profileOrder.length === 0) return profiles;
     const orderMap = new Map(profileOrder.map((key, index) => [key, index]));
-    return [...allProfiles].sort((a, b) => {
+    return [...profiles].sort((a, b) => {
       const aIndex = orderMap.get(getProfileKey(a));
       const bIndex = orderMap.get(getProfileKey(b));
       if (aIndex === undefined && bIndex === undefined) return 0;
@@ -215,7 +245,7 @@ export default function App() {
       if (bIndex === undefined) return -1;
       return aIndex - bIndex;
     });
-  }, [allProfiles, profileOrder]);
+  }, [profiles, profileOrder]);
 
   const filteredProfiles = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -229,6 +259,12 @@ export default function App() {
     () => filteredProfiles.slice(page * pageSize, page * pageSize + pageSize),
     [filteredProfiles, page]
   );
+  const adminPageSize = 10;
+  const adminTotalPages = Math.max(1, Math.ceil(orderedProfiles.length / adminPageSize));
+  const pagedAdminProfiles = useMemo(
+    () => orderedProfiles.slice(adminListPage * adminPageSize, adminListPage * adminPageSize + adminPageSize),
+    [orderedProfiles, adminListPage]
+  );
 
   useEffect(() => {
     setPage(0);
@@ -238,9 +274,14 @@ export default function App() {
     if (page > totalPages - 1) setPage(totalPages - 1);
   }, [page, totalPages]);
 
+  useEffect(() => {
+    if (adminListPage > adminTotalPages - 1) setAdminListPage(adminTotalPages - 1);
+  }, [adminListPage, adminTotalPages]);
+
   const heroStyle: CSSProperties = {
     transform: `translate3d(${heroTilt.x}px, ${heroTilt.y}px, 0)`,
   };
+  const isEditing = editingKey !== null;
 
   const isAdminAuthenticated = localStorage.getItem(ADMIN_AUTH_KEY) === "true";
 
@@ -257,8 +298,8 @@ export default function App() {
     setLoginError("Invalid credentials. Use admin / admin123");
   };
 
-  const saveCustomProfiles = (nextProfiles: Profile[]) => {
-    setCustomProfiles(nextProfiles);
+  const saveProfiles = (nextProfiles: Profile[]) => {
+    setProfiles(nextProfiles);
     localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(nextProfiles));
   };
 
@@ -276,17 +317,39 @@ export default function App() {
     event.preventDefault();
     if (!adminForm.name || !adminForm.role || !adminForm.bio || !adminForm.image) return;
     const nextProfile: Profile = {
+      id: editingKey ?? `custom-${Date.now()}`,
       name: adminForm.name.trim(),
       role: adminForm.role.trim(),
       bio: adminForm.bio.trim(),
       image: adminForm.image,
     };
-    saveCustomProfiles([nextProfile, ...customProfiles]);
+    const nextProfiles = editingKey
+      ? profiles.map((profile) => (getProfileKey(profile) === editingKey ? nextProfile : profile))
+      : [nextProfile, ...profiles];
+    saveProfiles(nextProfiles);
     setAdminForm({ name: "", role: "", bio: "", image: "" });
+    setEditingKey(null);
   };
 
-  const handleDeleteCustomProfile = (name: string) => {
-    saveCustomProfiles(customProfiles.filter((profile) => profile.name !== name));
+  const handleEditProfile = (profile: Profile, key: string) => {
+    setAdminForm({
+      name: profile.name,
+      role: profile.role,
+      bio: profile.bio,
+      image: profile.image,
+    });
+    setEditingKey(key);
+  };
+
+  const handleDeleteProfile = (targetKey: string) => {
+    const nextProfiles = profiles.filter((profile) => getProfileKey(profile) !== targetKey);
+    saveProfiles(nextProfiles);
+    const nextOrder = profileOrder.filter((key) => key !== targetKey);
+    persistProfileOrder(nextOrder);
+    if (editingKey === targetKey) {
+      setEditingKey(null);
+      setAdminForm({ name: "", role: "", bio: "", image: "" });
+    }
   };
 
   const persistProfileOrder = (nextOrder: string[]) => {
@@ -361,21 +424,53 @@ export default function App() {
             />
             <input type="file" accept="image/*" onChange={handleImageUpload} />
             {adminForm.image && <img src={adminForm.image} alt="Preview" className="adminPreview" />}
-            <button type="submit">Add Profile</button>
+            <button type="submit">{isEditing ? "Update Profile" : "Add Profile"}</button>
+            {isEditing && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingKey(null);
+                  setAdminForm({ name: "", role: "", bio: "", image: "" });
+                }}
+              >
+                Cancel Edit
+              </button>
+            )}
           </form>
           <div className="adminList">
-            <h2>Locally Added Profiles</h2>
-            {customProfiles.length === 0 && <p>No custom profiles yet.</p>}
-            {customProfiles.map((profile) => (
-              <article key={profile.name} className="adminListItem">
+            <h2>Manage All Profiles</h2>
+            {orderedProfiles.length === 0 && <p>No profiles found.</p>}
+            {orderedProfiles.length > 0 && (
+              <div className="teamPager adminPager">
+                <button disabled={adminListPage === 0} onClick={() => setAdminListPage((p) => Math.max(0, p - 1))}>
+                  Previous
+                </button>
+                <span>
+                  Page {adminListPage + 1} of {adminTotalPages}
+                </span>
+                <button
+                  disabled={adminListPage === adminTotalPages - 1}
+                  onClick={() => setAdminListPage((p) => Math.min(adminTotalPages - 1, p + 1))}
+                >
+                  Next
+                </button>
+              </div>
+            )}
+            {pagedAdminProfiles.map((profile) => {
+              const key = getProfileKey(profile);
+              return (
+              <article key={key} className="adminListItem">
                 <img src={profile.image} alt={profile.name} />
                 <div>
                   <strong>{profile.name}</strong>
                   <span>{profile.role}</span>
                 </div>
-                <button onClick={() => handleDeleteCustomProfile(profile.name)}>Delete</button>
+                <div className="adminRowActions">
+                  <button type="button" onClick={() => handleEditProfile(profile, key)}>Edit</button>
+                  <button onClick={() => handleDeleteProfile(key)}>Delete</button>
+                </div>
               </article>
-            ))}
+            )})}
           </div>
           <div className="adminTeamPreview">
             <h2>Team Section Preview (Drag To Rearrange)</h2>
