@@ -1,0 +1,1936 @@
+<html>
+
+<head>
+    <title>PYXIS Management Consulting Group</title>
+    <link type="image/ico" rel="icon" href="images/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#connect-with-us-modal').on('hidden.bs.modal', function() {
+                $('#contact-form').removeClass('d-none')
+                $('#contact-form-success').addClass('d-none')
+            })
+        })
+
+        function openProfile(name, role, description, url) {
+            $('#profile-name').html(name)
+            $('#profile-role').html(role)
+            $('#profile-description').html(description)
+            $('#image-preview').attr('src', url)
+            $('#image-modal').modal('show')
+        }
+
+        function setCharactersLeft() {
+            let len = $('#contact-us-message').val().length
+            if (len > 0) {
+                $('#characters-message').html(
+                    '<span class="text-bold">' +
+                    (500 - len) +
+                    '</span>&nbsp;characters left.'
+                )
+            } else {
+                $('#characters-message').html(
+                    'Maximum&nbsp;<span class="text-bold">500</span>&nbsp;characters.'
+                )
+            }
+        }
+
+        function sendMail() {
+            $.ajax({
+                url: 'sendmail.htm',
+                success: function(result) {
+                    $('#contact-form').addClass('d-none')
+                    $('#contact-form-success').removeClass('d-none')
+                },
+                error: function(xhr, status, error) {
+                    alert(error)
+                }
+            })
+        }
+    </script>
+</head>
+
+<body class="bar-1">
+    <header class="header-sticky header-absolute">
+        <nav class="navbar navbar-expand-xl py-0 fixed-top bg-white shadow">
+            <div class="container-fluid">
+                <!-- Logo START -->
+                <a class="navbar-brand py-0" href="index.htm">
+            <img
+              class="dark-mode-item navbar-brand-item logo"
+              src="images/logo.png"
+              alt="logo"
+            />
+          </a>
+                <!-- Logo END -->
+
+                <!-- Buttons -->
+                <ul class="nav align-items-center dropdown-hover ms-sm-2">
+                    <!-- Responsive navbar toggler -->
+                    <li class="nav-item">
+                        <button class="navbar-toggler ms-sm-3 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-animation">
+                  <span class="navbar-toggler-icon"></span>
+                </span>
+              </button>
+                    </li>
+                </ul>
+
+                <!-- Main navbar START -->
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="navbar-nav navbar-nav-scroll dropdown-hover w-100 d-flex justify-content-center gap-5">
+                        <!-- Nav item -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">OUR SERVICES</a
+                >
+                <ul class="dropdown-menu border-0 bg-light rounded-0 px-2 py-0">
+                  <!-- Dropdown submenu -->
+                  <li class="border-bottom border-orange py-1">
+                    <a
+                      class="dropdown-item"
+                      href="program-and-project-management.htm"
+                      >Program and Project Management</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a
+                      class="dropdown-item"
+                      href="organizational-change-management.htm"
+                      >Organizational Change Management</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a
+                      class="dropdown-item"
+                      href="instructional-design-and-training.htm"
+                      >Instructional Design & Training</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a
+                      class="dropdown-item"
+                      href="system-modernization-system-migration.htm"
+                      >System Modernization & System Migration</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="quality-assurance.htm"
+                      >Quality Assurance</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a
+                      class="dropdown-item"
+                      href="independent-verification-and-validation.htm"
+                      >Independent Verification & Validation</a
+                    >
+                  </li>
+                  <li class="py-1">
+                    <a class="dropdown-item" href="procurement-services.htm"
+                      >Procurement Services</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Nav item -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >MARKETS</a
+                >
+                <ul class="dropdown-menu border-0 bg-light rounded-0 px-2 py-0">
+                  <!-- Dropdown submenu -->
+                  <li class="border-bottom border-orange py-1">
+                    <a
+                      class="dropdown-item"
+                      href="health-and-human-services.htm"
+                      >Health and Human Services</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="transporation-services.htm"
+                      >Transportation Services</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="healthcare.htm"
+                      >Healthcare</a
+                    >
+                  </li>
+                  <li class="py-1">
+                    <a class="dropdown-item" href="life-sciences.htm"
+                      >Life Sciences</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Nav item -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >ABOUT US</a
+                >
+                <ul class="dropdown-menu border-0 bg-light rounded-0 px-2 py-0">
+                  <!-- Dropdown submenu -->
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="about-us.htm#our-team"
+                      >Our Team</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="about-us.htm#company-culture"
+                      >Company Culture</a
+                    >
+                  </li>
+                  <li class="py-1">
+                    <a class="dropdown-item" href="about-us.htm#our-values"
+                      >Our Values</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Nav item -->
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="https://pyxis.keka.com/careers/"
+                  target="_blank"
+                  >CAREERS</a
+                >
+              </li>
+
+              <!-- Nav item -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >GOVERNMENT CONTRACTS</a
+                >
+                <ul class="dropdown-menu border-0 bg-light rounded-0 px-2 py-0">
+                  <!-- Dropdown submenu -->
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="TX-DIR-ITSAC.htm"
+                      >Texas DIR - IT Staff Augmentation</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="TDDC.htm"
+                      >California Technology, Digital and Data Consulting
+                      (TDDC)</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="CMAS.htm"
+                      >California Multiple Award Schedules (CMAS)</a
+                    >
+                  </li>
+                  <li class="border-bottom border-orange py-1">
+                    <a class="dropdown-item" href="CalPERS.htm"
+                      >California Public Employees' Retirement System
+                      (CalPERS)</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Nav item -->
+              <li class="nav-item">
+                <a class="nav-link" href="mailto:info@pyxismcg.com">CONNECT</a>
+                            <!-- <a
+                  class="nav-link"
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#connect-with-us-modal"
+                  >CONNECT</a
+                > -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- Main navbar END -->
+            </div>
+        </nav>
+    </header>
+    <div class="bg-dark">
+        <div class="d-flex flex-column align-items-center w-100">
+            <div>
+                <div class="logo"></div>
+                <div class="position-relative">
+                    <img src="images/index-image1.png" class="w-100 img-header-40 op-lt" />
+                    <div class="position-absolute start-0 bottom-30 p-5 text-white">
+                        <div class="d-flex flex-row position-relative align-items-center">
+                            <img src="svgs/location.svg" height="100" class="me-3" />
+                            <div>
+                                <p class="mb-0 fw-bold text-shadow fs-banner">
+                                    Navigating success
+                                </p>
+                                <p class="fw-bold text-orange text-shadow fs-banner">
+                                    together
+                                </p>
+                                <!-- <img src="images/Path.gif" /> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-absolute bottom-2 left-5 w-100">
+                        <img src="images/Path.gif" class="w-100" />
+                    </div>
+                </div>
+                <!-- <div class="bg-darkblue" style="height: 80px"></div> -->
+                <div class="container-fluid px-5 pb-5 bg-white">
+                    <div class="row pb-3">
+                        <div class="col text-orange text-bold fs-4rem d-flex justify-content-center">
+                            Our Services
+                        </div>
+                    </div>
+                    <div class="row px-5">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
+                            <div class="card shadow rounded-0 border-0 d-flex flex-column h-100">
+                                <img src="images/index-service-image1.png" class="w-100 img-15 op-center" />
+                                <div class="p-2 fs-1dot2rem text-blue text-bold h-100">
+                                    Program and Project Management
+                                </div>
+                                <a class="fs-1rem px-2 pb-2 text-bold text-orange text-decoration-none" role="button" href="program-and-project-management.htm">
+                    Read more..
+                  </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
+                            <div class="card shadow rounded-0 border-0 d-flex flex-column h-100">
+                                <img src="images/index-service-image2.png" class="w-100 img-15 op-center" />
+                                <div class="p-2 fs-1dot2rem text-blue text-bold h-100">
+                                    Organizational Change Management
+                                </div>
+                                <a class="fs-1rem px-2 pb-2 text-bold text-orange text-decoration-none" role="button" href="organizational-change-management.htm">
+                    Read more..
+                  </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
+                            <div class="card shadow rounded-0 border-0 d-flex flex-column h-100">
+                                <img src="images/index-service-image3.png" class="w-100 img-15 op-center" />
+                                <div class="p-2 fs-1dot2rem text-blue text-bold h-100">
+                                    Instructional Design & Training
+                                </div>
+                                <a class="fs-1rem px-2 pb-2 text-bold text-orange text-decoration-none" role="button" href="instructional-design-and-training.htm">
+                    Read more..
+                  </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
+                            <div class="card shadow rounded-0 border-0 d-flex flex-column h-100">
+                                <img src="images/index-service-image4.png" class="w-100 img-15 op-center" />
+                                <div class="p-2 fs-1dot2rem text-blue text-bold h-100">
+                                    System Modernization & System Migration
+                                </div>
+                                <a class="fs-1rem px-2 pb-2 text-bold text-orange text-decoration-none" role="button" href="system-modernization-system-migration.htm">
+                    Read more..
+                  </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
+                            <div class="card shadow rounded-0 border-0 d-flex flex-column h-100">
+                                <img src="images/index-service-image5.png" class="w-100 img-15 op-center" />
+                                <div class="p-2 fs-1dot2rem text-blue text-bold h-100">
+                                    Quality Assurance
+                                </div>
+                                <a class="fs-1rem px-2 pb-2 text-bold text-orange text-decoration-none" role="button" href="quality-assurance.htm">
+                    Read more..
+                  </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
+                            <div class="card shadow rounded-0 border-0 d-flex flex-column h-100">
+                                <img src="images/index-service-image6.png" class="w-100 img-15 op-lt" />
+                                <div class="p-2 fs-1dot2rem text-blue text-bold h-100">
+                                    Independent Verification & Validation
+                                </div>
+                                <a class="fs-1rem px-2 pb-2 text-bold text-orange text-decoration-none" role="button" href="independent-verification-and-validation.htm">
+                    Read more..
+                  </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
+                            <div class="card shadow rounded-0 border-0 d-flex flex-column h-100">
+                                <img src="images/index-service-image7.png" class="w-100 img-15 op-center" />
+                                <div class="p-2 fs-1dot2rem text-blue text-bold h-100">
+                                    Procurement Services
+                                </div>
+                                <a class="fs-1rem px-2 pb-2 text-bold text-orange text-decoration-none" role="button" href="procurement-services.htm">
+                    Read more..
+                  </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="bg-orange" style="height: 40px"></div> -->
+                <div class="position-relative">
+                    <img src="images/index-image3.png" class="w-100 img-24" style="opacity: 0.7" />
+                    <div class="position-absolute start-0 top-30 px-5 text-white">
+                        <div class="d-flex flex-row align-items-center">
+                            <div class="circle">
+                                <img src="svgs/stars.svg" class="me-5 circle-svg" />
+                            </div>
+                            <div class="ms-3">
+                                <p class="mb-0 fw-bold fs-banner">What Sets Us Apart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid p-5 bg-white">
+                    <p class="fs-1dot5rem mb-4">
+                        PYXIS Management Consulting Group partners with agencies on modernization initiatives in both the
+                        <span class="fs-1dot5rem text-blue text-bold">public</span> and
+                        <span class="fs-1dot5rem text-blue text-bold">private sectors.</span
+              >
+              We offer a plethora of
+              <span class="fs-1dot5rem text-blue text-bold"
+                >digital transformation</span
+              >
+              services including advisory, quality assurance, and system
+              integration to achieve successful implementations and sustainable
+              operations that see value-based outcomes for our customers.
+            </p>
+            <p class="fs-1dot5rem">
+              Our organization is woven with
+              <span class="fs-1dot5rem text-blue text-bold"
+                >decades of experience</span
+              >
+              as the thread, and that is what makes Pyxis stand out. Our team's
+              attention to
+              <span class="fs-1dot5rem text-blue text-bold">detail</span> and
+                        <span class="fs-1dot5rem text-blue text-bold">personability</span> creates an
+                        <span class="fs-1dot5rem text-blue text-bold">inclusive environment</span
+              >
+              for ideas to flow, and partnerships to excel.
+            </p>
+          </div>
+          <div class="position-relative">
+            <img src="images/index-image6.png" class="w-100 img-24 op-lt" />
+            <div
+              class="position-absolute start-0 bottom-0 top-30 px-5 text-white"
+            >
+              <div class="d-flex flex-row align-items-center">
+                <div class="circle">
+                  <img src="svgs/team.svg" class="me-5 circle-svg" />
+                </div>
+                <div class="ms-3">
+                  <p class="mb-0 fw-bold fs-banner">Our Team</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="container-fluid p-5 bg-white d-flex flex-column justify-content-center"
+          >
+            <div class="row mb-3">
+              <div class="col">
+                <div
+                  id="teamCarousel"
+                  class="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <div class="carousel-indicators">
+                    <span
+                      data-bs-target="#teamCarousel"
+                      data-bs-slide-to="0"
+                      class="active"
+                    ></span>
+                        <span data-bs-target="#teamCarousel" data-bs-slide-to="1"></span>
+                        <span data-bs-target="#teamCarousel" data-bs-slide-to="2"></span>
+                        <span data-bs-target="#teamCarousel" data-bs-slide-to="3"></span>
+                        <span data-bs-target="#teamCarousel" data-bs-slide-to="4"></span>
+                        <span data-bs-target="#teamCarousel" data-bs-slide-to="5"></span>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="100000">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Debasis (Deb) Saha',
+                                  'Founder & CEO',
+                                  'Deb is an innovative and transformational consulting leader with a proven track record in business & IT enterprise transformation, market development, and mega deal contract negotiations. With over 30 years of experience, Deb excelled in advising, implementing, operationalizing clients core business strategies and delivering sustained business value with exceptional financial results. Deb is recognized for his focus on people, culture and talent development including mentoring of the next generation of leaders. His work includes leading teams in strategy and operations, system modernization, system migration, maintenance & operations, and quality assurance activities.',
+                                  'images/profiles/debasis.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/debasis.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Debasis (Deb) Saha
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Founder & CEO
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Nina Shetty',
+                                  'Chief Customer Officer',
+                                  'As CCO, Nina focuses on leading teams and partnering with our customers to achieve transformative, sustainable results. Prior to joining PYXIS, Nina has held various leadership positions at Deloitte, Genentech/Roche and most recently at Salesforce, focused on enterprise transformation, strategy, and customer success.',
+                                  'images/profiles/nina.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/nina.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Nina Shetty
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Chief Customer Officer
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Abhay Tiwari',
+                                  'Senior Consultant',
+                                  'Abhay is a postgraduate in Finance and Business Analytics. He has over 2.5 years of experience as Project Controller in management consulting in the public sector. Abhay is Proficient with extensive experience in budgeting, analytical skills, pricing, financial analysis, variance analysis and project financial reporting.',
+                                  'images/profiles/abhay.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/abhay.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Abhay Tiwari
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Amber Njau',
+                                  'Specialist Master',
+                                  'Amber is a specialist with more than 26 years of experience in child support programs with the State of Indiana. She has spent her career working with private- and public-sector vendors specializing in Health and Human Service programs. She is PMP certified and has experience building and supporting PMO offices and working in various roles across SDLC processes.',
+                                  'images/profiles/amber.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/amber.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Amber Njau
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Master
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Arohi Narang',
+                                  'Analyst',
+                                  'Arohi has 3+ years of experience in cloud and AI, building scalable solutions across GCP, AWS, and Azure. She began as a Platform Engineer working on application development and deployment on Cloud, and later focused on MLOps and automation. More recently, she has developed AI agent systems and designed end-to-end MLOps workflows through hands-on projects.',
+                                  'images/profiles/arohi.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/arohi.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Arohi Narang
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Analyst
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Arpita Maharana',
+                                  'Consultant',
+                                  'Arpita is a Quality Assurance Analyst with over seven years of experience in software testing across large-scale enterprise systems. She has worked extensively on Eligibility and Interline Baggage Systems, focusing on functional, regression, and end-to-end testing to ensure reliable, high-quality software.',
+                                  'images/profiles/arpita.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/arpita.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Arpita Maharana
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Ashmita Maharjan',
+                                  'Analyst',
+                                  'Ashmita brings five years of experience in the quality assurance field. Her background is in QA manual and automation.',
+                                  'images/profiles/ashmita.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/ashmita.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Ashmita Maharjan
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Analyst
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Ashojit Shakya',
+                                  'Consultant',
+                                  'Ashojit has about 6 years of diverse experience in analyzing business and technical requirements, developing test plans and scripts. While working in IE (Integrated Eligibility) one project that stood out was as an UAT tester and validating result as per User\'s prospective. He has experience validating different programs like Government Medicaid\'s, SNAP (Supplemental Assistance Nutrition Program), TANF (Temporary Assistance for Needy Family), TADVS (Temporary Assistance for Domestic Violence Survivors).',
+                                  'images/profiles/ashojit.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/ashojit.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Ashojit Shakya
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Casmir Chinecherem',
+                                  'Analyst',
+                                  'Casmir is skilled in end-to-end project planning, test strategies, multiple scenarios creation and overall quality management. He is experienced in automation using software like selenium, and has partnered with dedicated tech teams where they combined artificial intelligence and machine learning to provide automated solutions across finance, marketing, engineering and other SME\'s.',
+                                  'images/profiles/casmir.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/casmir.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Casmir Chinecherem
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Analyst
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Cathy Ready',
+                                  'Director',
+                                  'Cathy has over 20 years working in consulting finance in the public sector market. She is a proven leader, with extensive experience in budgeting, forecasting, and modeling financials for large projects. She can breakdown complex models to explain KPIs and metrics and suggest areas of improvement. Cathy has a track record of solving complex issues and working with clients to keep contracts and billing on track.',
+                                  'images/profiles/cathy.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/cathy.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Cathy Ready
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Director
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Cecilia Rodriguez',
+                                  'Senior Consultant',
+                                  'An Experienced Analyst with over 15 years in Health and Human services, specializing in policies, team development and service delivery. Cecilia is skilled in various testing types, defect resolution, root cause analysis, IT service management, project management and business process modeling. She first began her journey as a Hospital coordinator for a Pediatric Dental office where she found her passion to help others. This then lead her to be an Eligibility Specialist for State eligibility workers in Oregon, where she was offered a position as a Business Analyst. Cecilia became recognized as a Subject Matter expert in Integrated Eligibility systems and statespecific program policies, becoming a Testing specialist for the UAT team. Eventually she was given the opportunity to work with the State of Illinois Supplemental and Overpayment program as a Functional Analyst and Subject Matter expert for testing team on the integrated eligibility system and state specific policies.',
+                                  'images/profiles/cecilia.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/cecilia.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Cecilia Rodriguez
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Chaitanya CJ Patel',
+                                  'Senior Consultant',
+                                  'Chaitanya has over 12 years of experience in the design, Development, testing, maintenance & operations and implementation of a large and small-scale integrations projects in the IT industry. He specializes in the areas of Product Management, Business Analysis. Chaitanya has served his clients in Project Management/oversight in integration projects.',
+                                  'images/profiles/chaitanya.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/chaitanya.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Chaitanya (CJ) Patel
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Chirag Parekh',
+                                  'Senior Manager',
+                                  'Chirag has 15+ years of IT experience which includes multiple cloud migrations and middleware technologies. Chirag has dedicated 14 years in the health and human services domain and has extensive experience working and collaborating with multiple vendors. He specializes in Application Architecture, Cloud Architecture, and designing enterprise-wide scalable, highly available, and faulttolerant architectures. He has extensive experience in managing middleware technologies with opensource cost-effective implementations. Chirag is highly experienced in the security domain. He has worked on vulnerability management as well as helped agencies and clients with multiple audits and getting applications compliant with NIST-800, FIPS 140-2, and PUB 1075. Chirag is 2X AWS certified and 1X IBM certified.',
+                                  'images/profiles/chirag.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/chirag.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Chirag Parekh
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Chris Ikemoto',
+                                  'Senior Consultant',
+                                  'Chris has worked in a variety of fields in IT from Desktop Support, System & Network Administration, Identity Access Management, Business Process Analysis, Technical Writing, to Training.  She has worked in both the private sector and government sectors and enjoys both teaching and learning new things to all levels of an organization.',
+                                  'images/profiles/chris.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/chris.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Chris Ikemoto
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Hannah Rovner',
+                                  'Consultant',
+                                  'Hannah is joining the Pyxis team with a background in mass communications and marketing in government and e-commerce sectors. She has worked with on-the-ground campaigns to help spread broad messaging via social media and email marketing. Hannah has been involved in political campaigns, Direct to Consumer product launches, and now public sector technology projects in her young career. She has technical experience with Adobe Suite, Graphic Design software like Canva, various social media platforms, email marketing platforms, and AP Style Journalistic writing.',
+                                  'images/profiles/hannah.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/hannah.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Hannah Rovner
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Jay Arumugam',
+                                  'Senior Manager',
+                                  'Jay has been in the public sector industry for the past 26 years and has been focused exclusively on Salesforce since 2017. In that time, he has led multiple large-scale public sector projects for 7 different States covering Child Support Enforcement Systems as well as Child Welfare systems and ensuring high quality delivery, achievement of clients\' expectations.',
+                                  'images/profiles/jay.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/jay.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Jay Arumugam
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Jayanthi Tadepalli',
+                                  'Consultant',
+                                  'Jayanthi is a seasoned QA professional with over 8 years of experience delivering high-quality software solutions across banking, insurance, and scientific platforms with strong expertise in both manual and automation testing. She is passionate about ensuring reliable, scalable, and user-focused software releases and committed to continuous improvement.',
+                                  'images/profiles/jayanthi.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/jayanthi.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Jayanthi Tadepalli
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Jean-Paul Valladares',
+                                  'Consultant',
+                                  'Jean-Paul is a highly skilled professional with extensive experience in business analysis, project management, compliance, and customer support. Proficient in joint application design, system esting, user acceptance testing, and test case development, utilizing tools such as SQL, SQL Server, Microsoft Office Suite, and Microsoft Test Manager Visual Studio. Adept at processing claims, leading software testing efforts, managing complex databases, and providing empathetic customer support. Demonstrates strong analytical abilities and problem-solving skills, with a proven track record in managing large teams, optimizing system performance, and ensuring data integrity. Experienced in both the public and private sectors, contributing to significant projects within the Oregon Employment Department, Deloitte Consulting, and the Oregon Health Authority.',
+                                  'images/profiles/jean.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/jean.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Jean-Paul Valladares
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Jennifer Duve',
+                                  'Manager',
+                                  'Jennifer is a dynamic and results-driven Project Manager with over 20 years of experience leading cross functional teams to successful project outcomes. Possesses strong leadership abilities, exceptional communication skills and detail oriented. Proficient in project management methodologies such as Agile, Scrum and Waterfall. Proven track record of delivering complex projects on time and within budget, while exceeding client expectations. Active PMP, with a master\'s degree in project management, a technical background, and extensive project experience with complex, large-scale government implementations and private industry enterprise system implementations, with a broad array of unique clients and geographically, culturally diverse cross-functional project teams.',
+                                  'images/profiles/jennifer-duve.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/jennifer-duve.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Jennifer Duve
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Jennifer (Jenny) Rutheiser',
+                                  'Director',
+                                  'Jenny has over 35 years of experience in the health and human services industry with over 20 years in IT. She has a wide range of experience managing delivery teams and working with customers, partners, state, and county agencies. She is recognized for her leadership in developing, delivering, and monitoring quality solutions timely and efficiently. Jenny provides a unique perspective having spent years working in social services at the county level, as a system integrator during implementation, and as a quality assurance manager during maintenance & operations.',
+                                  'images/profiles/jennifer-ruth.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/jennifer-ruth.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Jennifer (Jenny) Rutheiser
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Director
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Jeya Murugan',
+                                  'Consultant',
+                                  'Jeya is a seasoned QA professional with a decade of experience in functional analysis, test automation, and system validation across public-sector healthcare platforms. She brings a strong track record of leading end-to-end testing initiatives, identifying high-impact defects, and streamlining automation workflows to ensure system reliability and compliance. As a Subject Matter Expert (SME) in MEDS, Jeya has played a pivotal role in major migrations, interface validations, and regulatory testing, such as SSA and FPL COLA.',
+                                  'images/profiles/jeya.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/jeya.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Jeya Murugan
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Jimmie Jimenez',
+                                  'Senior Consultant',
+                                  'Jimmie worked for EDS/HP/HPE/DXC/Gainwell for the past 16 years on the CalWIN account.  Where they maintained this automated welfare system for 18 counties in the state of California.  Those 18 counties had the largest population of the State.  Her expertise is in the SDLC included Help Desk, QA/QC, Eligibility and she was the COLA (Cost of Living Adjustment) SME for the account. Jimmie was also was the Reference Table SME and the Defect SME for Eligibility.',
+                                  'images/profiles/jimmie.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/jimmie.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Jimmie Jimenez
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Joe Scully',
+                                  'Specialist Master',
+                                  'Joe has worked as a software developer and development manager specializing in tools and applications to modernize mainframe environments.   This includes database, middleware and replication technologies providing access to mainframe data directly or moving mainframe data to other systems.  He has also worked for software companies (IBM, Cullinet/CA, Sybase) and State Street Corporation working on integrating their various financial systems.',
+                                  'images/profiles/joe.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/joe.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Joe Scully
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Master
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Joy Viraj Kumbhani',
+                                  'Manager',
+                                  'Joy has over 8 years of experience in Consulting Finance for the Public Sector market. His extensive experience ranges from pricing, budgeting, forecasting, financial analysis of small and large-scale projects to maintaining project stakeholder relationships. Joy has a proven track record of managing large staffing mixes, variance analysis, expense analysis, vendor cost management, and tracking project financials.',
+                                  'images/profiles/joy.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/joy.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Joy Viraj Kumbhani
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Lija Ann Jacob',
+                                  'Consultant',
+                                  'Lija is a senior quality assurance tester and lead with six years of experience supporting healthcare insurance and eligibility systems. She specializes in Medicaid and Medicare programs, eligibility determination, interface validation, and full-cycle regression testing for large-scale state systems, including TennCare\'s TEDS platform. Lija has led cross-functional testing teams, supported SIT and UAT efforts, and delivered stable, compliant releases on schedule. She is ASTQB certified and holds advanced degrees in Business Administration and Biotechnology.',
+                                  'images/profiles/lija.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/lija.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Lija Ann Jacob
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Madhu Erla',
+                                  'Senior Consultant',
+                                  'Madhu holds a Master\'s degree from the Florida Institute of Technology and over the years he has worked across multiple domains and technologies. His core technical experience includes Java, C#, .NET, Angular, and SQL along with a strong foundation in designing and delivering practical, value-driven solutions.',
+                                  'images/profiles/madhu.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/madhu.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Madhu Erla
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Mani K',
+                                  'Specialist Leader',
+                                  'Mani is a Program Manager and Leader who is distinguished by strong technical background, consulting experience, operational leadership, and strategic application of technology – taking organizations to next-level growth and advancement through innovation and deployment of emerging technologies. His experience in the IT industry spans over 30 years in Insurance, Retail and Government sectors. He has spent more than 20 years in the motor vehicle industry and led innovative technology, enabled growth with new cost saving functionalities and operations. He specializes in business process improvement, streamlining operation & maintenance and legacy system transformation.',
+                                  'images/profiles/mani.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/mani.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Mani K
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Leader
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Merv Jersak',
+                                  'Executive Consultant',
+                                  'Merv has over 40 years of experience in the design, development, and implementation (DDI) of a variety of large and small-scale systems integration projects. He is a conscientious, hands-on, motivational leader who focuses on people over technology and process in implementing successful results for his clients. Over the span of his career, he has served his clients in project management/oversight and advisory roles; procurement and vendor selection; quality assurance and independent verification and validation; feasibility analyses; change management; and DDI activities. He has served in executive management and project leadership roles on both sides of the client organization/vendor relationship, and in all phases of the systems integration life cycle.',
+                                  'images/profiles/merv.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/merv.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Merv Jersak
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Executive Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Nancy Brice',
+                                  'Specialist Leader',
+                                  'Nancy has over 45 years experience in the HHS field serving with a passion for eligibility. She is well-versed in all eligibility programs including SNAP, TANF, Medicaid, MAGI Medicad, General Assistance, Welfare to Work, as well as Foster Care. With her consulting experience she has worked in multiple states implementing Integrated Eligibility Systems and is experienced in all areas of the SDLC process. She has also managed testing, functional, and PMO teams.',
+                                  'images/profiles/nancy.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/nancy.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Nancy Brice
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Leader
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Narendar Bureddy',
+                                  'Senior Manager',
+                                  'Narendar has worked as a Data Architect, Data Conversion Lead, DBA in Healthcare, Government, Banking and Retail sectors. He is experienced in handling multiple state government projects such as Child Welfare, Integrated Eligibility and Unemployment Insurance etc. He has experience in gathering requirements, analyzing, designing, and developing complex systems. His skillset also involves designing scalable, highly available, fault tolerant and cost-effective solutions in both On-premises and cloud environments. As well as experience migrating data from legacy to new solutions (on-prem to on-prem, on-prem to cloud), design and build data warehouses, data models, reporting and ETL solutions. He has an eagerness to learn and keep up to date with emerging technologies.',
+                                  'images/profiles/narendar.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/narendar.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Narendar Bureddy
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Noopur M',
+                                  'Senior Consultant',
+                                  'Noopur has 9+ years of experience in Data and Analytics space. She has worked as a Customer Success Engineer with Databricks and as a Senior Consultant with Deloitte Consulting LLP in the past. Her expertise is in data conversion/migration and data warehousing implementations. She enjoys working and analyzing data, as well as she has vast experience working with various state and local government projects.',
+                                  'images/profiles/noopur.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/noopur.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Noopur M
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Pavan Chivukula',
+                                  'Specialist Master',
+                                  'Quality Assurance professional with over 14 years of experience, including 5 years as a Test Manager. Strong background in handling large-scale eligibility projects, with a passion for Test Management. Well-versed in the entire QA life cycle.',
+                                  'images/profiles/pavan.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/pavan.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Pavan Chivukula
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Master
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Pooja Manshani',
+                                  'Senior Consultant',
+                                  'Pooja, a distinguished graphic designer with over 11 years of professional experience. Her journey in the design industry has been marked by a remarkable talent for creating visually captivating design layouts that go beyond aesthetics to convey powerful messages and stories. Recently, she has completed a UI/UX certification, a testament to her unwavering commitment to remaining at the cutting edge of design trends. This certification reflects her dedication to enhancing user experiences. Beyond the realm of design, Pooja is a creative problem solver who relishes new challenges.',
+                                  'images/profiles/pooja.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/pooja.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Pooja Manshani
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Prasad Vara',
+                                  'Specialist Master',
+                                  'Prasad has joined Pyxis as a QA Analyst, bringing extensive experience in software quality assurance. His background includes testing web applications, enterprise systems, and Salesforce-based platforms. Over the years, he has worked with tools such as Selenium WebDriver and Tosca for test automation, JIRA for defect and test management, and various API testing tools to ensure application reliability, functionality, and performance.<br/><br/> He also has strong hands-on experience in Salesforce testing, including validating Salesforce configurations, custom objects, workflows, validation rules, and integrations. In addition to QA responsibilities, he has supported Salesforce administration activities such as user management, permission sets, profiles, and testing automation built using flows and process builders.',
+                                  'images/profiles/prasad.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/prasad.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Prasad Vara
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Master
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Priyanka Chakrabarty',
+                                  'Senior Manager',
+                                  'Priyanka Chakrabarty is an experienced technology program and portfolio leader with deep expertise in large-scale government transformation programs, particularly in Health and Human Services systems. <br/><br/>With over 20 years of experience in enterprise technology and consulting, Priyanka has built a strong reputation for managing large, multi-vendor programs involving state agencies, system integrators, and technology teams. Her work has primarily focused on Integrated Eligibility platforms that support critical public assistance programs such as Medicaid, SNAP, and TANF. She specializes in bringing structure and clarity to complex implementations, managing dependencies across business, technology, and operations teams.',
+                                  'images/profiles/priyanka.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/priyanka.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Priyanka Chakrabarty
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Rachana Panni',
+                                  'Consultant',
+                                  'Rachana is a quality assurance consultant with over 6 years of experience in software testing, specializing in Medicaid, Medicare, and eligibility systems. She has led QA initiatives for TennCare and ACES, focusing on functional, interface, and report testing. Proficient in Power BI, JIRA/JAMA, Azure DevOps, and SQL, with strong capabilities in UAT, SIT, and test case development. Rachana has been recognized for contributions to the COVID Care project and for delivering high-quality results through Agile and SDLC methodologies.',
+                                  'images/profiles/rachana.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/rachana.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Rachana Panni
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Rajmohan (Raj) Mohanarangan',
+                                  'Executive Consultant',
+                                  'Raj comes with over 25 years of accomplished IT experience and has led large geographically distributed global teams. He is skilled in implementing processes to optimize operations, accelerate performance and enhance competency. He has successfully weaved together competent and diverse digital ecosystem of trusted solution partners to drive client\'s digital transformation initiatives. Raj has passionately mentored and enabled small and medium enterprises to thrive even during turbulent times.',
+                                  'images/profiles/rajmohan.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/rajmohan.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Rajmohan (Raj) Mohanarangan
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Executive Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Ramadevi Ramamohan',
+                                  'Consultant',
+                                  'Ramadevi Ramamohan is an accomplished Senior Quality Analyst with more than a decade of experience advancing quality engineering across complex enterprise and customer‑facing platforms. She has led large-scale validation efforts for modernization initiatives in healthcare, insurance, and public-sector domains, ensuring seamless integration, data accuracy, and highly reliable end‑to‑end user experiences. Throughout her career, she has been recognized for her strategic approach to quality, her ability to translate business needs into effective testing frameworks, and her leadership in guiding cross‑functional teams. Ramadevi brings a strong combination of analytical rigor, operational excellence, and stakeholder partnership to every engagement she supports.',
+                                  'images/profiles/ramadevi.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/ramadevi.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Ramadevi Ramamohan
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Renee Durham',
+                                  'Executive Consultant',
+                                  'Renee is an accomplished dynamic professional who has more than twenty-five (25) years of experience with an impressive record of achievement and advancement through a series of progressively responsible positions leading government healthcare including MMIS and Medicaid operations to &quot;Service Delivery Excellence&quot;.  She has extensive expertise in client needs analysis with a consultative approach to ensure the organization remains nimble and focused on clients\' changing needs and market conditions. She has successfully guided sizeable cross-functional teams in design, development, product configuration, customization, implementation, product upgrades, reengineering and launch of improvement solutions.  She is an expert presenter, negotiator, and collaborator, able to forge solid relationships with strategic partners and build consensus across multiple organizational levels. She is also adept at establishing policies and procedures, while leveraging emerging technologies, to enhance efficiency and service to the business.',
+                                  'images/profiles/renee.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/renee.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Renee Durham
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Executive Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Roja Adira',
+                                  'Consultant',
+                                  'Roja has over 14 years of QA experience. She has experience working on Manual, Automation, Database, and API Testing and worked on waterfall and agile methodology. She has experience working with automation tools like QTP using VBScript, TOSCA, Selenium with Protractor framework, and also Cucumber framework with JavaScript, and Java.',
+                                  'images/profiles/roja.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/roja.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Roja Adira
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Rudra Sinha',
+                                  'Analyst',
+                                  'Rudra is a postgraduate in Industrial Engineering from Texas A&M University. He has a strong background in operations, logistics and supply chain, complemented by hands-on roles in academia as a Teaching Assistant. He is passionate about leveraging data-driven decision-making and process improvement to drive efficiency and innovation.',
+                                  'images/profiles/rudra.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/rudra.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Rudra Sinha
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Analyst
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Sai Chetan Rudrashetty',
+                                  'Analyst',
+                                  'Sai Chetan Rudrashetty is a QA Automation Engineer with over six years of experience in software testing, specializing in automation, end-to-end testing, and enterprise application quality assurance. He has worked on complex web, API, and cloud-based systems using tools such as Selenium, Cypress, and modern CI/CD pipelines. Throughout his career, he has contributed to improving software reliability, test automation frameworks, and quality processes across multiple enterprise environments. Sai is passionate about leveraging technology to improve system performance, ensure seamless user experiences, and support innovation in software development.',
+                                  'images/profiles/sai.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/sai.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Sai Chetan Rudrashetty
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Analyst
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Sanjay Katti',
+                                  'Executive Consultant',
+                                  'Sanjay is a dynamic and trusted Senior Program Manager. He excels in leading digital transformation-based engagements. He is an accomplished technical expert and builds credibility with business stakeholders in implementing solutions that result in tangible outcomes. Sanjay has a passion of mentoring junior staff and focuses on taken development. His accomplishments include system modernization, legacy migration, and cloud engineering in the state and local market.',
+                                  'images/profiles/sanjay.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/sanjay.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Sanjay Katti
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Executive Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Satabdi Panda',
+                                  'Senior Manager',
+                                  'Satabdi is a seasoned HR professional with 15 years of experience enabling business leaders through organizational change, talent initiatives, and people strategy in global technology and consulting environments. Her prior experience includes HR business partner and advisor roles, as well as advisory work with early-stage organizations. Satabdi brings a steady, people-centric approach, informed by her interest in psychology, continuous learning, and building inclusive, psychologically safe workplaces.',
+                                  'images/profiles/satabdi.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/satabdi.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Satabdi Panda
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Sathyan Kuppuswamy',
+                                  'Specialist Leader',
+                                  'Sathyan Kuppuswamy is a consulting leader in the Health and Human Services domain with a strong and proven track record in IT system modernization and transformation. A certified Project Management Professional (PMP) and Certified Scrum Master, he brings over 25 years of experience leading Child Support modernization initiatives and developing customer and employer portals across multiple states. Sathyan specializes in full lifecycle project delivery—from requirements gathering and design to implementation, operations, and post-launch enhancements. He has successfully led complex modernization efforts, partnered with state leadership to shape product roadmaps, ensured compliance with federal certification requirements, and fostered collaboration across diverse stakeholder groups. Proficient in Agile, Waterfall, and hybrid methodologies, he has directed onshore and offshore teams in the design, development, testing, and delivery of high-impact, mission-critical solutions.',
+                                  'images/profiles/sathyan.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/sathyan.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Sathyan Kuppuswamy
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Leader
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Sharmistha Mukherjee',
+                                  'Consultant',
+                                  'Sharmistha has three and a half years of experience as a Human Resource and Operations Analyst. During this time, she gained expertise in workforce management, vendor management, and provided end-to-end recruitment support for both government and commercial projects.',
+                                  'images/profiles/sharmistha.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/sharmistha.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Sharmistha Mukherjee
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Shravani Thalla',
+                                  'Analyst',
+                                  'Shravani holds a Master\'s degree in Business Analytics from Boston University and has over 2 years of experience in the Financial Analytics domain. She brings a strong background in end-to-end project management, data-driven decision making, and business intelligence. Her expertise lies in leveraging tools such as Excel, Tableau, and SQL to perform advanced data analysis, build interactive dashboards, and deliver actionable insights to key stakeholders. Shravani is skilled in working with large datasets, identifying trends and anomalies, and translating complex data into clear business strategies.',
+                                  'images/profiles/shravani.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/shravani.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Shravani Thalla
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Analyst
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Sona Joshi',
+                                  'Consultant',
+                                  'Sona brings 13 years of experience as a Quality Engineer, mainly in the healthcare and insurance industries. Her past projects include working with the State of West Virginia, where she led testing efforts for Case Load Management (FAW). ',
+                                  'images/profiles/sona.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/sona.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Sona Joshi
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Consultant
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Srikanth Birudakota',
+                                  'Analyst',
+                                  'Srikanth holds Master\'s degree in Business Analytics from Kent State University and comes with 4 years of experience working at the intersection of data, operations, and supply chain performance. He specializes in leveraging tools such as Tableau, Power BI, Python and SQL to analyse large and complex datasets, develops interactive dashboards, and translates analytical findings into clear, actionable insights.',
+                                  'images/profiles/srikanth.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/srikanth.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Srikanth Birudakota
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Analyst
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Swati Lohia',
+                                  'Director',
+                                  'Swati has over 20 years of experience in Software Design, Development, Implementation, and Operations for highly complex and mission critical projects at California State Government agencies. She has a wide range of experience in multiple service offerings such as Strategy and Operations, Project Management, Quality Assurance (QA), Independent Verification & Validation (IV&V), and Business Process Improvements. She is recognized for her leadership and developing trusted partnership with customers, partners, and state agencies. Highly enthusiastic and self-motivated, Swati takes pride in leading by example. She has a passion for thinking outside the box and learning new skills/concepts. Swati\'s hobbies include reading books on varied subjects and taking cruises.',
+                                  'images/profiles/swati.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/swati.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Swati Lohia
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Director
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Tathagata (Ted) Guha',
+                                  'Senior Director',
+                                  'Ted has 25+ years of leadership experience in advisory, consulting and execution of strategic technology initiatives across Government and Fortune 50 commercial clients. He is a proven leader in partnering with clients and driving strategy and execution of complex global implementation and managed services programs across Public Sector, Life Sciences, Healthcare and Med Devices industry domains. He has extensive experience in leading large global cross-functional / technology teams across technology and business domains to successfully deliver customer business outcomes. He has led cross-technology implementation, quality assurance and managed services programs across mainframe systems, client-server systems, custom web platforms, BPM solutions, data warehouse/analytic platforms, COTS products, ERP (SAP and Oracle), Cloud implementations (Oracle, S/4 HANA EHS & BI platforms on MS Azure).',
+                                  'images/profiles/tathagata.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/tathagata.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Tathagata (Ted) Guha
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Director
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Tim Moriarty',
+                                  'Senior Manager',
+                                  'Tim Moriarty is a Senior Manager located in Austin, TX. Tim has twenty years of Consulting experience focused on State Government. He has strong project management and systems integration experience and has worked at BearingPoint, Deloitte, CGI, and Gartner.',
+                                  'images/profiles/tim.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/tim.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Tim Moriarty
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Senior Manager
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+                                    <div class="card rounded-0 p-2 d-flex flex-row h-100 profile-card align-items-center" role="button" onclick="
+                                openProfile(
+                                  'Vida Sanchez',
+                                  'Specialist Master',
+                                  'Experienced leader with a 23-year career in state government, program, and project management. In 2003, Ms. Tapia-Sanchez started her state government career as a Family Assistance Analyst and ended as Deputy Director of Quality, Compliance and Data with the Income Support Division, where she provided day to day oversight of NM’s public assistance programs (SNAP, TANF and Medicaid). In this role she was also responsible for the successful implementation of New Mexico’s statewide eligibility system, serving as the rules engine development and notice improvement leads. Ms. Tapia-Sanchez has also been responsible for the ongoing development and enhancement of the eligibility system as a subject matter expert and project owner.',
+                                  'images/profiles/vida.png'
+                                )
+                              ">
+                                        <div class="profile-image me-3">
+                                            <img src="images/profiles/vida.png" height="100" />
+                                        </div>
+                                        <div class="profile-desc d-flex flex-column">
+                                            <span class="text-blue fs-1dot5rem">
+                                  Vida Sanchez
+                                </span>
+                                            <span class="text-blue fs-1dot2rem fst-italic">
+                                  Specialist Master
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#teamCarousel" data-bs-slide="prev">
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#teamCarousel" data-bs-slide="next">
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="position-relative">
+        <img src="images/index-image5.png" class="w-100 img-header-40 op-lt" />
+        <div class="position-absolute ps-5 text-white" style="top: 30%; left: 20%">
+            <div class="d-flex flex-row align-items-center">
+                <a class="btn bg-orange text-white text-nowrap py-3 px-4 fs-2rem fw-bold rounded-2 shadow" href="mailto:info@pyxismcg.com">CONNECT WITH US</a
+                >
+                <!-- <button
+                  type="button"
+                  class="btn bg-orange text-white p-3 fs-2rem fw-bold rounded-4 shadow"
+                  data-bs-toggle="modal"
+                  data-bs-target="#connect-with-us-modal"
+                >
+                  CONNECT WITH US
+                </button> -->
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid p-3 bg-black">
+            <div class="row">
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-2 d-flex align-items-center"
+              >
+                <img
+                  class="dark-mode-item navbar-brand-item logo"
+                  src="svgs/logo-white.svg"
+                  alt="logo"
+                />
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                <p class="fs-2rem text-white text-bold">Our Services</p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="program-and-project-management.htm"
+                    class="text-white text-decoration-none"
+                    >Program and Project Management</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="organizational-change-management.htm"
+                    class="text-white text-decoration-none"
+                    >Organizational Change Management</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="instructional-design-and-training.htm"
+                    class="text-white text-decoration-none"
+                    >Instructional Design & Training</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="system-modernization-system-migration.htm"
+                    class="text-white text-decoration-none"
+                  >
+                    System Modernization & System Migration</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="quality-assurance.htm"
+                    class="text-white text-decoration-none"
+                    >Quality Assurance</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="independent-verification-and-validation.htm"
+                    class="text-white text-decoration-none"
+                  >
+                    Independent Verification & Validation</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="procurement-services.htm"
+                    class="text-white text-decoration-none"
+                    >Procurement Services</a
+                  >
+                </p>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                <p class="fs-2rem text-white text-bold">Markets</p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="health-and-human-services.htm"
+                    class="text-white text-decoration-none"
+                    >Health and Human Services</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="transporation-services.htm"
+                    class="text-white text-decoration-none"
+                    >Transportation Services</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="healthcare.htm"
+                    class="text-white text-decoration-none"
+                    >Healthcare</a
+                  >
+                </p>
+                <p class="fs-1rem text-white">
+                  <a
+                    href="life-sciences.htm"
+                    class="text-white text-decoration-none"
+                    >Life Sciences</a
+                  >
+                </p>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                <p class="fs-2rem text-white text-bold">Contact</p>
+                <a
+                  class="fs-1rem text-orange text-decoration-none"
+                  href="mailto:info@pyxismcg.com"
+                  >info@pyxismcg.com</a
+                >
+                <p class="fs-2rem text-white text-bold my-2">Follow Us On</p>
+                <a
+                  href="https://www.linkedin.com/company/pyxis-management-consulting-group/mycompany/?viewAsMember=true"
+                  target="_blank"
+                  ><img src="images/linkedin.png" width="50"
+                /></a>
+            </div>
+        </div>
+        <div class="row border-top border-dark py-3">
+            <div class="col text-white d-flex justify-content-center align-items-center fs-0dot9rem">
+                Copyright 2024 <sup>&copy;</sup>&nbsp; PYXIS Management Consulting Group | All Rights Reserved.
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="modal fade" id="connect-with-us-modal" tabindex="-1" aria-labelledby="connect-with-us" aria-hidden="true" data-keyboard="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-darkblue text-white">
+                    <h5 class="modal-title" id="connect-with-us">CONNECT WITH US</h5>
+                    <button type="button" class="btn-close btn-close-white opacity-100" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="contact-form">
+                        <div class="mb-3">
+                            <span class="fs-1dot2rem">Name<span class="text-orange">*</span></span>
+                            <input class="form-control mb-2 rounded-1 bg-gray" type="text" name="Name" placeholder="Name" autocomplete="off" />
+                            <span class="fs-1dot2rem">Email<span class="text-orange">*</span></span>
+                            <input class="form-control mb-2 rounded-1 bg-gray" type="text" name="Email" placeholder="Email" autocomplete="off" />
+                            <div>
+                                <span class="fs-1dot2rem">Message<span class="text-orange">*</span></span>
+                                <textarea id="contact-us-message" class="form-control rounded-1 bg-gray" rows="3" placeholder="Type message" autocomplete="off" maxlength="500" onkeyup="javascript: setCharactersLeft()"></textarea>
+                                <span class="d-flex justify-content-end" id="characters-message">Maximum&nbsp;<span class="text-bold">500</span
+                    >&nbsp;characters.</span
+                  >
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn bg-orange text-white fs-1dot5rem"
+                  onclick="javascript: sendMail()"
+                >
+                  SUBMIT
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-flex flex-column align-items-center d-none"
+              id="contact-form-success"
+            >
+              <img src="images/ok.gif" width="100" />
+              <p>
+                Thank you for reaching out to Pyxis, we will get back to you as
+                soon as we can. In the meantime,
+                <span class="text-bold"
+                  >please follow us on LinkedIn for more up-to-date
+                  information.</span
+                >
+              </p>
+              <div class="bg-gray p-3 d-flex align-items-center">
+                <img src="images/linkedin.png" width="50" />
+                <a
+                  href="https://www.linkedin.com/company/pyxis-management-consulting-group/mycompany/?viewAsMember=true"
+                  >https://www.linkedin.com/company/pyxis-management-consulting-group/mycompany/?viewAsMember=true</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal modal-pro fade" tabindex="-1" id="image-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body bar-1">
+            <div class="container-fluid">
+              <div class="row">
+                <div
+                  class="col d-flex justify-content-between align-items-start"
+                >
+                  <div>
+                    <div
+                      id="profile-name"
+                      class="text-blue text-bold fs-1dot5rem"
+                    ></div>
+                    <div
+                      id="profile-role"
+                      class="text-blue fs-1dot2rem fst-italic mb-2"
+                    ></div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    aria-label="Close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-9">
+                  <span id="profile-description" class="fs-1dot2rem"></span>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="modal-profile-image">
+                                    <img src="" id="image-preview" height="150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
